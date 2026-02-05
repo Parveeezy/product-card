@@ -5,6 +5,6 @@ toggleButton.addEventListener("click", () => {
   toggleButton.classList.toggle("switch-color");
 });
 
-titleText.addEventListener('mouseenter', () => {
-    console.log(titleText.innerText)
+titleText.addEventListener('mouseover', () => {
+    console.log(titleText.textContent)
 })
