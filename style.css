@@ -5,7 +5,6 @@
     font-family: 'Montserrat', sans-serif;
     color: #515076;
 }
-
 .wrapper {
     width: 1280px;
     margin: 0 auto;
@@ -13,7 +12,6 @@
     padding-right: 85px;
     text-align: center;
 }
-
 .title-container {
     background-image: url('./assets/background_image.png');
     background-size: cover;
@@ -21,7 +19,6 @@
     height: 697px;
     position: relative;
 }
-
 .title {
     font-weight: 400;
     color: #515076;
@@ -33,7 +30,6 @@
     transform: translate(-50%, -50%);
     z-index: 2;
 }
-
 .toggle-button {
     color: black;
     background-color: aqua;
@@ -42,14 +38,10 @@
     left: 130px;
     top: 150px;
 }
-
 .switch-color {
     color: aqua;
     background-color: black;
 }
-
-
-
 .cards-container {
     width: 1110px;
     display: flex;
@@ -62,19 +54,16 @@
     background-color: #FFFFFF;
     gap: 45px;
 }
-
 .product-card {
     background-color: #5150761A;
     width: 340px;
     padding: 25px 25px 25px;
     text-align: start;
 }
-
 .card-img {
     width: 290px;
     height: 245px;
 }
-
 .card-skin-type {
     font-weight: 400;
     font-size: 12px;
@@ -82,26 +71,22 @@
     text-transform: uppercase;
     color: #A5A3B9;
 }
-
 .card-title {
     font-size: 20px;
     font-weight: 700;
     margin-top: 10px;
 }
-
 .card-description {
     font-weight: 400;
     font-size: 13px;
     margin-top: 10px;
 }
-
 .ingredients-wrapper {
     font-weight: 400;
     font-size: 13px;
     margin-top: 10px;
     text-align: start;
 }
-
 .ingredients {
     display: flex;
     justify-content: flex-start;
@@ -109,7 +94,6 @@
     padding-top: 10px;
     text-align: start;
 }
-
 .ingredients::before {
     width: 4px;
     height: 4px;
@@ -119,24 +103,20 @@
     content: "";
     border-radius: 50%;
 }
-
 .ingredient-text {
     font-size: 13px;
     margin-left: 8px;
 }
-
 .card-price-wrapper {
     margin-top: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 .card-price-text {
     font-weight: 700;
     font-size: 20px;
 }
-
 .card-price {
     font-size: 20px;
 }
