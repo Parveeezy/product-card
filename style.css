@@ -34,6 +34,22 @@
     z-index: 2;
 }
 
+.toggle-button {
+    color: black;
+    background-color: aqua;
+    padding: 10px;
+    position: absolute;
+    left: 130px;
+    top: 150px;
+}
+
+.switch-color {
+    color: aqua;
+    background-color: black;
+}
+
+
+
 .cards-container {
     width: 1110px;
     display: flex;
