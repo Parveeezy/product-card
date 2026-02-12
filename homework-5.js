@@ -53,3 +53,25 @@ function purchaseProduct(budget) {
   }
 }
 purchaseProduct(90)
+
+// Задание №6
+// Создать 1 функцию и именовать её по своему усмотрению
+
+function getTotalPrice (a, b) {
+  console.log(a + b);
+  return a + b
+}
+
+// Задание №7
+// Создать 3 переменных (без разницы каких) и именовать их по своему усмотрению
+
+var order = {
+  id: 1,
+  orderNumber: "XYZ-2026-001",
+  createdAt: new Date("2025-02-12"),
+  status: "delivered"
+}
+
+let numbers = [1, 3, 5, 12, 11, 16]
+
+const BASE_URL = "https://google.com"
