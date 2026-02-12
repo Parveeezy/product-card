@@ -9,6 +9,8 @@ function showTemperature(city, temperature) {
   );
 }
 
+showTemperature("Moscow", -17)
+
 // Задание №4
 /* Создать переменную, которая хранит внутри себя скорость света.
 Создать функцию, которая принимает 1 аргумент - скорость, внутри функции происходит проверка:
@@ -29,6 +31,8 @@ const checkLightSpeed = (lightSpeed) => {
   }
 };
 
+checkLightSpeed(300001)
+
 // Задание №5
 /* Создать переменную №1, которая содержит продукт и переменную №2, 
 которая содержит его цену (на ваше усмотрение). 
@@ -41,10 +45,11 @@ const checkLightSpeed = (lightSpeed) => {
 let product = "Chocolate";
 let productPrice = 100;
 
-function buyProduct(budget) {
+function purchaseProduct(budget) {
   if (budget >= productPrice) {
     console.log(`${product} приобретён. Спасибо за покупку!`);
   } else {
     console.log(`Вам не хватает ${productPrice - budget}$, пополните баланс`);
   }
 }
+purchaseProduct(90)
