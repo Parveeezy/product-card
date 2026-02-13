@@ -9,7 +9,7 @@ function showTemperature(city, temperature) {
   );
 }
 
-showTemperature("Moscow", -17)
+showTemperature("Moscow", -17);
 
 // Задание №4
 /* Создать переменную, которая хранит внутри себя скорость света.
@@ -31,7 +31,7 @@ const checkLightSpeed = (lightSpeed) => {
   }
 };
 
-checkLightSpeed(300001)
+checkLightSpeed(300001);
 
 // Задание №5
 /* Создать переменную №1, которая содержит продукт и переменную №2, 
@@ -52,14 +52,14 @@ function purchaseProduct(budget) {
     console.log(`Вам не хватает ${productPrice - budget}$, пополните баланс`);
   }
 }
-purchaseProduct(90)
+purchaseProduct(90);
 
 // Задание №6
 // Создать 1 функцию и именовать её по своему усмотрению
 
-function getTotalPrice (a, b) {
+function getTotalPrice(a, b) {
   console.log(a + b);
-  return a + b
+  return a + b;
 }
 
 // Задание №7
@@ -69,9 +69,9 @@ var order = {
   id: 1,
   orderNumber: "XYZ-2026-001",
   createdAt: new Date("2025-02-12"),
-  status: "delivered"
-}
+  status: "delivered",
+};
 
-let numbers = [1, 3, 5, 12, 11, 16]
+let numbers = [1, 3, 5, 12, 11, 16];
 
-const BASE_URL = "https://google.com"
+const BASE_URL = "https://google.com";
