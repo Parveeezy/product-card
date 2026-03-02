@@ -21,13 +21,14 @@ const car = {
   year: 2017,
   color: "Black",
   transmission: "Automatic",
+  carOwner: user,
 };
 
 // Написать функцию которая аргументом будет принимать объект, описанный в пункте №4.
 // Она проверяет, есть ли в объекте свойство "максимальная скорость",
 // если нет - добавляет его и задает значение, если есть - прекращает выполнение (ничего не делает)
 
-const checkMaxSpeed = (car) => {
+const getMaxSpeed = (car) => {
   if (!Object.keys(car).hasOwnProperty("maxSpeed")) {
     return { ...car, maxSpeed: 260 };
   }
@@ -39,7 +40,7 @@ checkMaxSpeed(car);
 // 6. Написать функцию, которая получает первым аргументом  — объект,
 // а вторым аргументом — свойство объекта, которое нужно вывести и выводит его значение.
 
-const getPropertyValue = (obj, value) => {
+const showPropertyValue = (obj, value) => {
   if (value in obj) {
     console.log(obj[value]);
   }
@@ -117,8 +118,8 @@ const allBooks = [...books, ...moreBooks];
 // Что я хочу этим сказать: если книга выпущена позже 2000 года, устанавливаем true (да, это редкий),
 // нет - false (значит это не редкий).
 
-const markRare = (books) => {
+const getRareBooks = (books) => {
   return books.map((el) => ({ ...el, isRare: el.year < 1990 }));
 };
 
-markRare(allBooks);
+getRareBooks(allBooks);
