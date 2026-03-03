@@ -1,52 +1,52 @@
 //  Создайте объект на основе ваших данных. Имя, фамилия, почта, работа, должность, возраст, страна, город, статус отношений
 
 const user = {
-  firstName: "Parviz",
-  lastName: "Shirinov",
-  email: "p.shirinov25@gmail.com",
-  job: "RANEPA",
-  jobTitle: "System Administrator",
-  age: 33,
-  country: "Russia",
-  city: "Moscow",
-  married: true,
-  childrenCount: 3,
+    firstName: "Parviz",
+    lastName: "Shirinov",
+    email: "p.shirinov25@gmail.com",
+    job: "RANEPA",
+    jobTitle: "System Administrator",
+    age: 33,
+    country: "Russia",
+    city: "Moscow",
+    married: true,
+    childrenCount: 3,
 };
 
 // Создайте объект, который будет хранить данные об автомобиле (марка, модель, год выпуска, цвет, вид коробки).
 
 const car = {
-  brand: "Range Rover",
-  model: "Sport",
-  year: 2017,
-  color: "Black",
-  transmission: "Automatic",
-  carOwner: user,
+    brand: "Range Rover",
+    model: "Sport",
+    year: 2017,
+    color: "Black",
+    transmission: "Automatic",
 };
+
+car.carOwner = user;
 
 // Написать функцию которая аргументом будет принимать объект, описанный в пункте №4.
 // Она проверяет, есть ли в объекте свойство "максимальная скорость",
 // если нет - добавляет его и задает значение, если есть - прекращает выполнение (ничего не делает)
 
-const getMaxSpeed = (car) => {
-  if (!Object.keys(car).hasOwnProperty("maxSpeed")) {
-    return { ...car, maxSpeed: 260 };
-  }
-  return;
+const setMaxSpeed = (car) => {
+    if (!car.hasOwnProperty("maxSpeed")) {
+        car.maxSpeed = 260;
+    }
 };
-
-checkMaxSpeed(car);
+setMaxSpeed(car);
+console.log(car);
 
 // 6. Написать функцию, которая получает первым аргументом  — объект,
 // а вторым аргументом — свойство объекта, которое нужно вывести и выводит его значение.
 
 const showPropertyValue = (obj, value) => {
-  if (value in obj) {
-    console.log(obj[value]);
-  }
+    if (value in obj) {
+        console.log(obj[value]);
+    }
 };
 
-getPropertyValue(user, "job");
+showPropertyValue(user, "job");
 
 // 7. Создать массив, который содержит названия продуктов (просто строки)
 
@@ -58,35 +58,35 @@ const products = ["apple", "potato", "juice", "carrot", "bread", "milk"];
 // Можете заменить книги на фильмы, или другую сущность, идею вы поняли.
 
 const books = [
-  {
-    title: "Harry Potter and the Prisoner of Azkaban",
-    author: "J.K. Rowling",
-    year: 1999,
-    coverColor: "purple and teal",
-    genre: "fantasy novel",
-  },
-  {
-    title: "The Count of Monte Cristo",
-    author: "Alexandre Dumas",
-    year: 1846,
-    coverColor: "deep red",
-    genre: "historical adventure novel and a revenge thriller",
-  },
-  {
-    title: "The Alchemist",
-    author: "Paulo Coelho",
-    year: 1988,
-    coverColor: "orange",
-    genre: "quest adventure",
-  },
+    {
+        title: "Harry Potter and the Prisoner of Azkaban",
+        author: "J.K. Rowling",
+        year: 1999,
+        coverColor: "purple and teal",
+        genre: "fantasy novel",
+    },
+    {
+        title: "The Count of Monte Cristo",
+        author: "Alexandre Dumas",
+        year: 1846,
+        coverColor: "deep red",
+        genre: "historical adventure novel and a revenge thriller",
+    },
+    {
+        title: "The Alchemist",
+        author: "Paulo Coelho",
+        year: 1988,
+        coverColor: "orange",
+        genre: "quest adventure",
+    },
 ];
 
 books.push({
-  title: "Crime and Punishment",
-  author: "Fyodor Dostoevsky",
-  year: 1866,
-  coverColor: "black",
-  genre: "psychological fiction and literary realism",
+    title: "Crime and Punishment",
+    author: "Fyodor Dostoevsky",
+    year: 1866,
+    coverColor: "black",
+    genre: "psychological fiction and literary realism",
 });
 
 // 9. Создать еще один массив, состоящих из тех же книг, но относящийся к определенной вселенной
@@ -95,20 +95,20 @@ books.push({
 // объединить эти два массива в один
 
 const moreBooks = [
-  {
-    title: "Harry Potter and the Philosopher's Stone",
-    author: "J.K. Rowling",
-    year: 1997,
-    coverColor: "red and yellow",
-    genre: "fantasy novel",
-  },
-  {
-    title: "Harry Potter and the Chamber of Secrets",
-    author: "J.K. Rowling",
-    year: 1998,
-    coverColor: "red and green",
-    genre: "fantasy novel",
-  },
+    {
+        title: "Harry Potter and the Philosopher's Stone",
+        author: "J.K. Rowling",
+        year: 1997,
+        coverColor: "red and yellow",
+        genre: "fantasy novel",
+    },
+    {
+        title: "Harry Potter and the Chamber of Secrets",
+        author: "J.K. Rowling",
+        year: 1998,
+        coverColor: "red and green",
+        genre: "fantasy novel",
+    },
 ];
 const allBooks = [...books, ...moreBooks];
 
@@ -119,7 +119,7 @@ const allBooks = [...books, ...moreBooks];
 // нет - false (значит это не редкий).
 
 const getRareBooks = (books) => {
-  return books.map((el) => ({ ...el, isRare: el.year < 1990 }));
+    return books.map((el) => ({ ...el, isRare: el.year < 1990 }));
 };
 
 getRareBooks(allBooks);
