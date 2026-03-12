@@ -33,14 +33,14 @@ console.log(getReverseArray(arrOfStrings));
 
 // 7. Вывести в консоль массив тех комментариев, почта пользователей которых содержит ".com"
 
-const showCommentsByCom = (arr) => {
+const filteredCommentsByCom = (arr) => {
   const filteredComments = arr
     .filter((comment) => comment.email.endsWith(".com"))
     .map((el) => el.body);
   console.log(filteredComments);
 };
 
-showCommentsByCom(comments);
+filteredCommentsByCom(comments);
 
 // 8. Перебрать массив таким образом, что бы пользователи с id меньше или равно 5
 // имели postId: 2, а те, у кого id больше 5, имели postId: 1
