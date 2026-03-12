@@ -1,3 +1,5 @@
+import { comments } from "./comments.js";
+
 //Level 1
 
 // 2. Создать массив чисел от 1 до 10. Отфильтровать его таким образом,
@@ -29,26 +31,22 @@ console.log(getReverseArray(arrOfStrings));
 
 //Level 2
 
-import { comments } from "./comments.js";
-
 // 7. Вывести в консоль массив тех комментариев, почта пользователей которых содержит ".com"
 
-const showComments = (arr) => {
+const showCommentsByCom = (arr) => {
   const filteredComments = arr
     .filter((comment) => comment.email.endsWith(".com"))
     .map((el) => el.body);
   console.log(filteredComments);
 };
 
-showComments(comments);
+showCommentsByCom(comments);
 
-// 8. Перебрать массив таким образом, что бы пользователи с id меньше или равно 5 
+// 8. Перебрать массив таким образом, что бы пользователи с id меньше или равно 5
 // имели postId: 2, а те, у кого id больше 5, имели postId: 1
 
 const getChangedPostId = (arr) => {
-  return arr.map((el) =>
-    el.id <= 5 ? { ...el, postId: 2 } : { ...el, postId: 1 },
-  );
+  return arr.map((el) => ({ ...el, postId: el.id <= 5 ? 2 : 1 }));
 };
 
 console.log(getChangedPostId(comments));
@@ -62,39 +60,40 @@ const transformObjectsFromArray = comments.reduce((acc, el) => {
 
 console.log(transformObjectsFromArray);
 
-// 10. Перебираем массив, добавляем объектам свойство isInvalid и проверяем: 
-// если длина тела сообщения (body) больше 180 символов - 
+// 10. Перебираем массив, добавляем объектам свойство isInvalid и проверяем:
+// если длина тела сообщения (body) больше 180 символов -
 // устанавливаем true, меньше - false.
 
-const setNewObjectKey = comments.map((el) =>
-  el.body.length > 180 ? { ...el, isValid: true } : { ...el, isValid: false },
-);
+const validatedComments = comments.map((el) => ({
+  ...el,
+  isValid: el.body.length > 180,
+}));
 
-console.log(setNewObjectKey);
+console.log(validatedComments);
 
 //Level 3
 
-// 11. Почитать про метод массива reduce. Используя его, 
+// 11. Почитать про метод массива reduce. Используя его,
 // вывести массив почт и провернуть тоже самое с помощью метода map
 
-const getEmailFromReduce = comments.reduce((acc, el) => {
+const commentEmailByReduce = comments.reduce((acc, el) => {
   acc.push(el.email);
   return acc;
 }, []);
 
-console.log(getEmailFromReduce);
+console.log(commentEmailByReduce);
 
-const getEmailFromMap = comments.map((el) => el.email);
+const commentEmailByMap = comments.map((el) => el.email);
 
-console.log(getEmailFromMap);
+console.log(commentEmailByMap);
 
-// 12. Почитать про методы toString(), join() и перебрав массив с 
+// 12. Почитать про методы toString(), join() и перебрав массив с
 // задания №11, привести его к строке.
 
-const transformToString = getEmailFromReduce.toString();
+const transformArrayElementsToString = commentEmailByReduce.toString();
 
-console.log(transformToString);
+console.log(transformArrayElementsToString);
 
-const transformToStringWithJoin = getEmailFromReduce.join(", ");
+const transformToStringWithJoin = commentEmailByReduce.join(", ");
 
 console.log(transformToStringWithJoin);
