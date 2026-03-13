@@ -34,9 +34,9 @@ console.log(getReverseArray(arrOfStrings));
 // 7. Вывести в консоль массив тех комментариев, почта пользователей которых содержит ".com"
 
 const filteredCommentsByCom = (arr) => {
-  const filteredComments = arr
-    .filter((comment) => comment.email.endsWith(".com"))
-    .map((el) => el.body);
+  const filteredComments = arr.filter((comment) =>
+    comment.email.endsWith(".com"),
+  );
   console.log(filteredComments);
 };
 
@@ -46,7 +46,10 @@ filteredCommentsByCom(comments);
 // имели postId: 2, а те, у кого id больше 5, имели postId: 1
 
 const getChangedPostId = (arr) => {
-  return arr.map((el) => ({ ...el, postId: el.id <= 5 ? 2 : 1 }));
+  return arr.map((el) => ({
+    ...el,
+    postId: el.id <= 5 ? 2 : 1,
+  }));
 };
 
 console.log(getChangedPostId(comments));
@@ -76,24 +79,24 @@ console.log(validatedComments);
 // 11. Почитать про метод массива reduce. Используя его,
 // вывести массив почт и провернуть тоже самое с помощью метода map
 
-const commentEmailByReduce = comments.reduce((acc, el) => {
+const commentEmailsByReduce = comments.reduce((acc, el) => {
   acc.push(el.email);
   return acc;
 }, []);
 
-console.log(commentEmailByReduce);
+console.log(commentEmailsByReduce);
 
-const commentEmailByMap = comments.map((el) => el.email);
+const commentEmailsByMap = comments.map((el) => el.email);
 
-console.log(commentEmailByMap);
+console.log(commentEmailsByMap);
 
 // 12. Почитать про методы toString(), join() и перебрав массив с
 // задания №11, привести его к строке.
 
-const transformArrayElementsToString = commentEmailByReduce.toString();
+const transformArrayElementsToString = commentEmailsByReduce.toString();
 
 console.log(transformArrayElementsToString);
 
-const transformToStringWithJoin = commentEmailByReduce.join(", ");
+const transformToStringWithJoin = commentEmailsByReduce.join(", ");
 
 console.log(transformToStringWithJoin);
