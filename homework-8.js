@@ -3,57 +3,86 @@ import { products } from "./products.js";
 const cardsContainer = document.querySelector(".cards-container");
 const cardsTemplate = document.querySelector(".cards-template");
 
-//Получаем количество карточек, делаем проверку, возвращаем количество карточек
-const takeCardsCount = () => {
-  const count = +prompt();
-  if (isNaN(count)) {
-    alert("Введён недопустимый символ, обновите страницу и введите цифру");
-    return null;
+// Получаем валидное количество карточек с рекурсией
+const getValidCardCount = () => {
+  const maxCount = products.length;
+  const userInput = prompt(`Введите количество карточек (1-${maxCount}):`);
+  
+  // Проверка на отмену
+  if (userInput === null) {
+    alert("Вы отменили ввод. Будет показано 0 карточек.");
+    return 0;
   }
+  
+  const count = Number(userInput);
+  
+  // Валидация ввода
+  if (isNaN(count)) {
+    alert("Ошибка! Введите число.");
+    return getValidCardCount();
+  }
+  
+  if (!Number.isInteger(count)) {
+    alert("Ошибка! Введите целое число.");
+    return getValidCardCount();
+  }
+  
+  if (count < 1) {
+    alert("Ошибка! Число должно быть больше 0.");
+    return getValidCardCount();
+  }
+  
+  if (count > maxCount) {
+    alert(`Ошибка! Максимальное количество - ${maxCount}.`);
+    return getValidCardCount();
+  }
+  
   return count;
 };
 
-// Устанавливаем количество карточек после проверки и возвращаем нужное нам количество карточек
-const showCards = () => {
-  const cardsLength = takeCardsCount();
-  if (cardsLength === null) return [];
-  return products.slice(0, cardsLength);
+// Получаем массив карточек для отображения
+const getCardsToShow = () => {
+  const cardsCount = getValidCardCount();
+  return products.slice(0, cardsCount);
 };
 
-const cards = showCards();
-
-// Создаем карточки через template
-cards.forEach((product) => {
+// Рендер карточки
+const renderCards = () => {
+  const cards = getCardsToShow();
   
-  // Клонируем содержимое template
-  const templateContent = cardsTemplate.content.cloneNode(true);
-
-  // Заполняем данные
-  const card = templateContent.querySelector(".product-card");
-  const img = templateContent.querySelector(".card-img");
-  const skinType = templateContent.querySelector(".card-skin-type");
-  const title = templateContent.querySelector(".card-title");
-  const description = templateContent.querySelector(".card-description");
-  const ingredientsWrapper = templateContent.querySelector(
-    ".ingredients-wrapper",
-  );
-  const price = templateContent.querySelector(".card-price");
-
-  img.src = product.image;
-  img.alt = product.alternative;
-  skinType.textContent = product.type;
-  title.textContent = product.title;
-  description.textContent = product.description;
-  price.innerHTML = `${product.price} &#8381;`;
-
-  // Заполняем состав
-  product.makeup.forEach((ingredient) => {
-    const li = document.createElement("li");
-    li.className = "ingredients";
-    li.textContent = ingredient;
-    ingredientsWrapper.appendChild(li);
+  cards.forEach((card) => {
+    // Клонируем содержимое template
+    const templateContent = cardsTemplate.content.cloneNode(true);
+    
+    // Находим элементы в клоне
+    const cardElement = templateContent.querySelector(".product-card");
+    const img = templateContent.querySelector(".card-img");
+    const skinType = templateContent.querySelector(".card-skin-type");
+    const title = templateContent.querySelector(".card-title");
+    const description = templateContent.querySelector(".card-description");
+    const ingredientsWrapper = templateContent.querySelector(".ingredients-wrapper");
+    const priceElement = templateContent.querySelector(".card-price");
+    
+    // Заполняем данные
+    img.src = `./assets/${card.image}.png`;
+    img.alt = card.alt;
+    skinType.textContent = card.type;
+    title.textContent = card.title;
+    description.textContent = card.description;
+    priceElement.textContent = `${card.price.toLocaleString('ru-RU')} ₽`
+    
+    // Заполняем состав
+    card.ingredients.forEach((ingredient) => {
+      const li = document.createElement("li");
+      li.className = "ingredients";
+      li.textContent = ingredient;
+      ingredientsWrapper.appendChild(li);
+    });
+    
+    // Добавляем готовую карточку в контейнер
+    cardsContainer.appendChild(cardElement);
   });
+};
 
-  // Добавляем карточку в контейнер
-  cardsContainer.appendChild(card);
-});
+// Отрисовка карточек
+renderCards();
