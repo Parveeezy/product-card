@@ -9,7 +9,7 @@ const getValidCardCount = () => {
   const userInput = prompt(`Введите количество карточек (1-${maxCount}):`);
   
   // Проверка на отмену
-  if (userInput === null) {
+  if (!userInput) {
     alert("Вы отменили ввод. Будет показано 0 карточек.");
     return 0;
   }
@@ -47,9 +47,7 @@ const getCardsToShow = () => {
 };
 
 // Рендер карточки
-const renderCards = () => {
-  const cards = getCardsToShow();
-  
+const renderCards = (cards) => {
   cards.forEach((card) => {
     // Клонируем содержимое template
     const templateContent = cardsTemplate.content.cloneNode(true);
@@ -65,7 +63,7 @@ const renderCards = () => {
     
     // Заполняем данные
     img.src = `./assets/${card.image}.png`;
-    img.alt = card.alt;
+    img.alt = card.image;
     skinType.textContent = card.type;
     title.textContent = card.title;
     description.textContent = card.description;
@@ -85,4 +83,4 @@ const renderCards = () => {
 };
 
 // Отрисовка карточек
-renderCards();
+renderCards(getCardsToShow());
