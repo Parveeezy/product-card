@@ -69,7 +69,7 @@ const renderCards = () => {
     skinType.textContent = card.type;
     title.textContent = card.title;
     description.textContent = card.description;
-    priceElement.textContent = `${card.price.toLocaleString('ru-RU')} ₽`
+    priceElement.innerHTML = `${card.price.toLocaleString('ru-RU')} &#8381;`
     
     // Заполняем состав
     card.ingredients.forEach((ingredient) => {
