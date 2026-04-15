@@ -59,6 +59,7 @@
     top: 435px;
     background-color: #FFFFFF;
     gap: 45px;
+    padding-bottom: 30px;
 }
 
 .product-card {
@@ -91,6 +92,7 @@
     font-weight: 400;
     font-size: 13px;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .ingredients-wrapper {
