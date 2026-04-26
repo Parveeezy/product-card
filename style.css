@@ -11,6 +11,68 @@ body {
   height: 100%;
 }
 
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-showed {
+  display: flex;
+}
+
+.modal {
+  width: 600px;
+  height: 800px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+  z-index: 9999;
+}
+
+.modal form {
+  text-align: start;
+}
+
+.modal form div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 10px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10000;
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.error {
+  border: 1px solid red;
+}
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -24,8 +86,8 @@ body {
   padding-left: 85px;
   padding-right: 85px;
   text-align: center;
-  flex: 1 0 auto; /* Растягиваем контент */
-  position: relative; /* Создаем контекст для абсолютного позиционирования */
+  flex: 1 0 auto;
+  position: relative;
 }
 
 .title-container {
@@ -62,34 +124,29 @@ body {
   background-color: black;
 }
 
-/* Оставляем absolute, но добавляем padding-bottom к wrapper */
 .cards-container {
   width: 1110px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 435px;
-  left: 50%;
-  transform: translateX(-50%); /* Центрируем относительно wrapper */
   background-color: #ffffff;
   gap: 45px;
   padding-bottom: 30px;
   z-index: 3;
+  margin: 0 auto;
+  margin-top: -240px;
+  background-color: #ffffff;
+  gap: 45px;
+  position: relative;
+  z-index: 3;
 }
 
-/* ВАЖНО! Добавляем пустой блок для компенсации высоты */
 .wrapper::after {
   content: "";
   display: block;
-  /* Высота = top карточек + высота самого высокого блока карточек + отступы */
-  height: 800px; /* Подберите значение под ваш контент */
   visibility: hidden;
 }
-
-/* ИЛИ более точный вариант - через JavaScript */
-/* Но если без JS, то фиксированная высота */
 
 .product-card {
   background-color: #5150761a;
@@ -165,10 +222,10 @@ body {
 footer {
   background-color: #3a3a3a;
   padding: 40px 0;
-  margin-top: auto;
   flex-shrink: 0;
   color: #ffffff;
   text-align: center;
+  z-index: 9999999;
 }
 
 .footer-content-wrapper {
@@ -207,8 +264,7 @@ footer {
 }
 
 .footer-content-info-social-icons img:hover {
-  filter: brightness(0) saturate(100%) invert(62%) sepia(51%) saturate(2893%)
-    hue-rotate(163deg) brightness(98%) contrast(96%);
+  filter: brightness(0) saturate(100%) invert(62%) sepia(51%) saturate(2893%) hue-rotate(163deg) brightness(98%) contrast(96%);
 }
 
 .footer-subscribe-block {
@@ -276,27 +332,32 @@ footer {
   flex-direction: column;
   gap: 23px;
 }
+
 .footer-nav-title {
   color: #ffffff;
   font-size: 20px;
   font-weight: 500;
 }
+
 .footer-nav-links {
   display: flex;
   flex-direction: column;
   gap: 17px;
 }
+
 .footer-nav-link {
   color: #ffffff;
   font-size: 18px;
   font-weight: 400;
   text-decoration: none;
 }
+
 .footer-right-section {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
+
 .footer-rights {
   display: flex;
   flex-direction: column;
@@ -312,6 +373,7 @@ footer {
   background-color: #ffffff;
   align-self: center;
 }
+
 .footer-rights-description {
   margin-top: 33px;
   font-size: 18px;
