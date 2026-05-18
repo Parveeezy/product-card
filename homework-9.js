@@ -1,66 +1,46 @@
-const form = document.getElementById("subscribe");
-const inputElement = document.querySelector(".input");
+import { Modal } from "./Modal.js";
+import { Form } from "./Form.js";
 
 const registerBtn = document.getElementById("register");
-
-const overlay = document.querySelector(".overlay");
-const modalForm = document.getElementById("modal-form");
-const closeModal = document.querySelector(".close-modal-btn");
-
-const firstPassword = document.getElementById("password");
 const secondPassword = document.getElementById("return-password");
 
-// глобальный пользователь
+const modal = new Modal("registration-modal");
+const subscribeForm = new Form("subscribe");
+const registrationForm = new Form("modal-form");
+
 let user = null;
 
-// универсальная проверка формы
-const isFormValid = (formElement) => {
-    const isValid = formElement.checkValidity();
-
-    if (!isValid) {
-        console.log("Форма невалидна");
-    }
-
-    return isValid;
-};
-
 // Подписка (footer)
-form.addEventListener("submit", (e) => {
+subscribeForm.form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    if (!isFormValid(form)) return;
+    if (!subscribeForm.isValid()) return;
 
-    console.log({
-        email: inputElement.value,
-    });
+    console.log(subscribeForm.getValues());
 });
 
-// Модалка
+// Открытие модалки
 registerBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    overlay.classList.add("modal-showed");
+    modal.open();
 });
 
-overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) {
-        overlay.classList.remove("modal-showed");
+// Закрытие по клику на оверлей
+modal.modal.addEventListener("click", (e) => {
+    if (e.target === modal.modal) {
+        modal.close();
     }
-});
-
-closeModal.addEventListener("click", () => {
-    overlay.classList.remove("modal-showed");
 });
 
 // Регистрация
-modalForm.addEventListener("submit", (e) => {
+registrationForm.form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    if (!isFormValid(modalForm)) return;
+    if (!registrationForm.isValid()) return;
 
-    const firstPasswordValue = firstPassword.value;
-    const secondPasswordValue = secondPassword.value;
+    const values = registrationForm.getValues();
 
-    if (firstPasswordValue !== secondPasswordValue) {
+    if (values.password !== values["return-password"]) {
         secondPassword.classList.add("error");
         console.log("Пароли не совпадают. Регистрация отклонена");
         return;
@@ -68,21 +48,17 @@ modalForm.addEventListener("submit", (e) => {
 
     secondPassword.classList.remove("error");
 
-    // 3. создаём пользователя
     user = {
-        name: document.getElementById("name").value,
-        surname: document.getElementById("surname").value,
-        login: document.getElementById("login").value,
-        birthdate: document.getElementById("birthdate").value,
-        password: firstPasswordValue,
+        name: values.name,
+        surname: values.surname,
+        login: values.login,
+        birthdate: values.birthdate,
+        password: values.password,
         createdOn: new Date(),
     };
 
     console.log(user);
 
-    // 4. закрываем модалку
-    overlay.classList.remove("modal-showed");
-
-    // очистка формы
-    modalForm.reset();
+    modal.close();
+    registrationForm.reset();
 });
