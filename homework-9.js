@@ -1,5 +1,5 @@
-import { Modal } from "./Modal.js";
-import { Form } from "./Form.js";
+import {Modal} from "./homework-12/Modal.js";
+import {Form} from "./Form.js";
 
 const registerBtn = document.getElementById("register");
 const secondPassword = document.getElementById("return-password");
@@ -23,13 +23,6 @@ subscribeForm.form.addEventListener("submit", (e) => {
 registerBtn.addEventListener("click", (e) => {
     e.preventDefault();
     modal.open();
-});
-
-// Закрытие по клику на оверлей
-modal.modal.addEventListener("click", (e) => {
-    if (e.target === modal.modal) {
-        modal.close();
-    }
 });
 
 // Регистрация
