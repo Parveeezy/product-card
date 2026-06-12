@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Александр",
+      "surname": "Иванов",
+      "email": "a.ivanov@mail.ru",
+      "age": 28,
+      "city": "Москва",
+      "role": "Frontend Developer"
+    },
+    {
+      "id": 2,
+      "name": "Мария",
+      "surname": "Петрова",
+      "email": "m.petrova@gmail.com",
+      "age": 34,
+      "city": "Санкт-Петербург",
+      "role": "UX Designer"
+    },
+    {
+      "id": 3,
+      "name": "Дмитрий",
+      "surname": "Сидоров",
+      "email": "d.sidorov@yandex.ru",
+      "age": 22,
+      "city": "Казань",
+      "role": "Backend Developer"
+    }
+  ]
+}
